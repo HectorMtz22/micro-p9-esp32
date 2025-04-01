@@ -37,6 +37,7 @@ void app_main() {
     }
     if (gpio_get_level(BTNS_DECREMENT)) {
       if (--state <= 0) state = 0;
+      disp_show(state);
       vTaskDelay(TIME_DELAY / portTICK_PERIOD_MS);
     }
 
