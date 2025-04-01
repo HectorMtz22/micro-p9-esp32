@@ -14,7 +14,6 @@ Below is short explanation of remaining files in the project folder.
 
 ```
 ├── CMakeLists.txt
-├── pytest_hello_world.py      Python script used for automated testing
 ├── main
 │   ├── CMakeLists.txt
 │   └── main.c
