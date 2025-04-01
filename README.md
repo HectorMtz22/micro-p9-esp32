@@ -6,7 +6,7 @@ In this project I'm working with the difference between using a Debounce with so
 
 ## Folder contents
 
-The project **button_debounce** contains one source file in C language [hello_world_main.c](main/hello_world_main.c). The file is located in folder [main](main).
+The project **button_debounce** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
 
 ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt` files that provide set of directives and instructions describing the project's source files and targets (executable, library, or both).
 
@@ -17,7 +17,7 @@ Below is short explanation of remaining files in the project folder.
 ├── pytest_hello_world.py      Python script used for automated testing
 ├── main
 │   ├── CMakeLists.txt
-│   └── hello_world_main.c
+│   └── main.c
 └── README.md                  This is the file you are currently reading
 ```
 
