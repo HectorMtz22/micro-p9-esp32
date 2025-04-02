@@ -8,5 +8,8 @@
     "idf.portWin": "COM3",
     "idf.toolsPathWin": "C:\\Users\\Hctor\\.espressif",
     "C_Cpp.errorSquiggles": "enabled",
-    "idf.flashType": "UART"
+    "idf.flashType": "UART",
+    "files.associations": {
+        "display.h": "c"
+    }
 }
