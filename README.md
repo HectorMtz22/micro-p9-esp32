@@ -17,10 +17,29 @@ Below is short explanation of remaining files in the project folder.
 ├── main
 │   ├── CMakeLists.txt
 │   └── main.c
+├── components 
+│   ├── Buttons 
+│   │   ├── buttons.c
+│   │   ├── CMakeLists.txt
+│   │   └── include
+│   │       └── buttons.h
+│   └── Display7Seg
+│       ├── display.c
+│       ├── CMakeLists.txt
+│       └── include
+│           └── display.h
 └── README.md                  This is the file you are currently reading
 ```
 
 For more information on structure and contents of ESP-IDF projects, please refer to Section [Build System](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html) of the ESP-IDF Programming Guide.
+
+## Block Diagram
+
+![Block Diagram with ESP32](/assets/images/P5_diagrama_bloques.png)
+
+## Schematic Diagram
+
+![Schematic Design in KiCad](/assets/images/P5_schematic_design.png)
 
 ## Troubleshooting
 
