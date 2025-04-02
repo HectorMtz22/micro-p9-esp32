@@ -12,6 +12,8 @@ ESP-IDF projects are built using CMake. The project build configuration is conta
 
 Below is short explanation of remaining files in the project folder.
 
+PWM signal is based on this example: [LEDC Basic Example](https://github.com/espressif/esp-idf/tree/v5.4.1/examples/peripherals/ledc/ledc_basic)
+
 ```
 ├── CMakeLists.txt
 ├── main
@@ -23,11 +25,16 @@ Below is short explanation of remaining files in the project folder.
 │   │   ├── CMakeLists.txt
 │   │   └── include
 │   │       └── buttons.h
-│   └── Display7Seg
-│       ├── display.c
+│   ├── Display7Seg
+│   │   ├── display.c
+│   │   ├── CMakeLists.txt
+│   │   └── include
+│   │       └── display.h
+│   └── Ledc
+│       ├── ledc.c
 │       ├── CMakeLists.txt
 │       └── include
-│           └── display.h
+│           └── ledc.h
 └── README.md                  This is the file you are currently reading
 ```
 
