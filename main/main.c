@@ -10,6 +10,9 @@
 void app_main() {
   disp_init();
   btns_init();
+
+  disp_test();
+
   int state = 0;
   while (true) {
     disp_show(state);

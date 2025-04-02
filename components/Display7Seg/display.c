@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "display.h"
 #include "driver/gpio.h" 
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 void disp_init(void) {
   gpio_set_direction(DISP_7_SEG_A, GPIO_MODE_OUTPUT);
@@ -32,6 +34,18 @@ void disp_show(int number) {
 		0b01110001
 	};
 
+  if (number < 0 || number > 15) {
+    // Invalid number, turn off all segments
+    gpio_set_level(DISP_7_SEG_A, 0);
+    gpio_set_level(DISP_7_SEG_B, 0);
+    gpio_set_level(DISP_7_SEG_C, 0);
+    gpio_set_level(DISP_7_SEG_D, 0);
+    gpio_set_level(DISP_7_SEG_E, 0);
+    gpio_set_level(DISP_7_SEG_F, 0);
+    gpio_set_level(DISP_7_SEG_G, 0);
+    return;
+  }
+
   int segment = segments[number];
   gpio_set_level(DISP_7_SEG_A, segment & 0b00000001);
   gpio_set_level(DISP_7_SEG_B, segment & 0b00000010);
@@ -43,3 +57,11 @@ void disp_show(int number) {
   return;
 }
 
+void disp_test(void) {
+  for (int i = 0; i < 3; i++) {
+    disp_show(8);
+    vTaskDelay(TEST_DELAY / portTICK_PERIOD_MS);
+    disp_show(-1);
+    vTaskDelay(TEST_DELAY / portTICK_PERIOD_MS);
+  }
+}

@@ -13,7 +13,10 @@
 #define DISP_7_SEG_F GPIO_NUM_5
 #define DISP_7_SEG_G GPIO_NUM_17
 
+#define TEST_DELAY 200
+
 void disp_init(void);
+void disp_test(void);
 void disp_show(int number);
 
 #endif
