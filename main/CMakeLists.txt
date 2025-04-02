@@ -4,4 +4,5 @@ idf_component_register(
     INCLUDE_DIRS "."
     REQUIRES Display7Seg
     REQUIRES Buttons 
+    REQUIRES Ledc
 )
