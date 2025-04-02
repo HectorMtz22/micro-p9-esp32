@@ -9,6 +9,7 @@
 #define BTNS_DECREMENT GPIO_NUM_15
 
 void btns_init(void);
-int btns_debounce(void);
+int btns_increment_debounce(void);
+int btns_decrement(void);
 
 #endif // BUTTONS_H

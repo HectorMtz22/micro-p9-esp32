@@ -13,10 +13,14 @@ void btns_init(void) {
   return;
 }
 
-int btns_debounce(void) {
+int btns_increment_debounce(void) {
   vTaskDelay(10 / portTICK_PERIOD_MS);
   prev_state_btn = actual_state_btn;
   actual_state_btn = gpio_get_level(BTNS_INCREMENT);
 
   return !prev_state_btn && actual_state_btn;
+}
+
+int btns_decrement(void) {
+  return gpio_get_level(BTNS_DECREMENT);
 }

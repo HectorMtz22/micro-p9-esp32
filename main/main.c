@@ -2,7 +2,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#include "driver/gpio.h" 
 #include "display.h"
 #include "buttons.h"
 
@@ -14,14 +13,13 @@ void app_main() {
   int state = 0;
   while (true) {
     disp_show(state);
-    if (btns_debounce()) {
+    if (btns_increment_debounce()) {
       if (++state >= 0x0F) state = 0x0F;
     }
-    if (gpio_get_level(BTNS_DECREMENT)) {
+    if (btns_decrement()) {
       if (--state <= 0) state = 0;
       disp_show(state);
       vTaskDelay(TIME_DELAY / portTICK_PERIOD_MS);
     }
-
   }
 }
