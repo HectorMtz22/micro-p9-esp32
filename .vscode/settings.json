@@ -10,6 +10,7 @@
     "C_Cpp.errorSquiggles": "enabled",
     "idf.flashType": "UART",
     "files.associations": {
-        "display.h": "c"
+        "display.h": "c",
+        "ledc.h": "c"
     }
 }
