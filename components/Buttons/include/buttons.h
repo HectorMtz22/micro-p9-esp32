@@ -5,8 +5,8 @@
 #ifndef BUTTONS_H
 #define BUTTONS_H
 
-#define BTNS_INCREMENT GPIO_NUM_2
-#define BTNS_DECREMENT GPIO_NUM_15
+#define BTNS_INCREMENT GPIO_NUM_4
+#define BTNS_DECREMENT GPIO_NUM_2
 
 void btns_init(void);
 int btns_increment_debounce(void);
