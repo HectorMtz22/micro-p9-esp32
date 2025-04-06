@@ -5,4 +5,5 @@ idf_component_register(
     REQUIRES Display7Seg
     REQUIRES Buttons 
     REQUIRES Ledc
+    REQUIRES Leds
 )

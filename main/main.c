@@ -6,16 +6,19 @@
 #include "display.h"
 #include "buttons.h"
 #include "ledc.h"
+#include "leds.h"
 
 #define TIME_DELAY 300
 
 void app_main() {
   // Initialize the display, buttons, and LED
+  leds_init();
   disp_init();
   btns_init();
   ledc_init();
 
   disp_test();
+  leds_test();
 
   int state = 0;
   while (true) {
