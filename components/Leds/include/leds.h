@@ -9,8 +9,10 @@
 #define LEDS_5 GPIO_NUM_33
 #define LEDS_6 GPIO_NUM_32
 
+#define TEST_DELAY 200
+
 void leds_init(void);
 void leds_set(uint8_t);
-void leds_test(void);
+void leds_test(void *);
 
 #endif

@@ -17,8 +17,8 @@ void app_main() {
   btns_init();
   ledc_init();
 
+  xTaskCreate(leds_test, "LEDs Test", 2048, NULL, 3, NULL);
   disp_test();
-  leds_test();
 
   int state = 0;
   while (true) {

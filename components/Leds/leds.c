@@ -40,14 +40,12 @@ void leds_set(uint8_t led) {
     return;
 }
 
-void leds_test(void) {
-    leds_set(0xFF); // Turn on all LEDs
-    vTaskDelay(pdMS_TO_TICKS(500)); // Wait for 500 ms
-    leds_set(0x00); // Turn off all LEDs
-    vTaskDelay(pdMS_TO_TICKS(500)); // Wait for 500 ms
-    leds_set(0xFF); // Turn on all LEDs
-    vTaskDelay(pdMS_TO_TICKS(500)); // Wait for 500 ms
-    leds_set(0x00); // Turn off all LEDs
-    vTaskDelay(pdMS_TO_TICKS(500)); // Wait for 500 ms
-    return;
+void leds_test(void *pvParameters) {
+    for (int i = 0; i < 3; i++) {
+        leds_set(0xFF); // Turn on all LEDs
+        vTaskDelay(pdMS_TO_TICKS(TEST_DELAY));
+        leds_set(0x00); // Turn off all LEDs
+        vTaskDelay(pdMS_TO_TICKS(TEST_DELAY));
+    }
+    vTaskDelete(NULL); // Delete the task when done
 }
