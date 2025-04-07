@@ -5,14 +5,22 @@
 uint8_t prev_state_btn = 0;
 uint8_t actual_state_btn = 0;
 
+volatile int leds_state = 0;
 
 void btns_init(void) {
-  gpio_set_direction(BTNS_INCREMENT, GPIO_MODE_INPUT);
-  gpio_set_direction(BTNS_DECREMENT, GPIO_MODE_INPUT);
+  // Configure buttons as interrupts
+  gpio_config_t io_conf = {
+      .intr_type = GPIO_INTR_HIGH_LEVEL,
+      .mode = GPIO_MODE_INPUT,
+      .pin_bit_mask = (1ULL << BTNS_INCREMENT) | (1ULL << BTNS_DECREMENT),
+      .pull_down_en = GPIO_PULLDOWN_DISABLE,
+      .pull_up_en = GPIO_PULLUP_DISABLE,
+  };
+  gpio_config(&io_conf);
 
-  // Configure GPIOs as interrupts
-  gpio_set_intr_type(BTNS_INCREMENT, GPIO_INTR_HIGH_LEVEL); // Rising edge
-  gpio_set_intr_type(BTNS_DECREMENT, GPIO_INTR_HIGH_LEVEL); // Rising edge
+  gpio_install_isr_service(ESP_INTR_FLAG_LEVEL1);
+  gpio_isr_handler_add(BTNS_INCREMENT, btns_isr_handler_more, NULL);
+  gpio_isr_handler_add(BTNS_DECREMENT, btns_isr_handler_less, NULL);
   return;
 }
 
@@ -26,4 +34,13 @@ int btns_increment_debounce(void) {
 
 int btns_decrement(void) {
   return gpio_get_level(BTNS_DECREMENT);
+}
+
+// ISR for button more
+void btns_isr_handler_more(void *arg) {
+
+}
+// ISR for button 1
+void btns_isr_handler_less(void *arg) {
+
 }

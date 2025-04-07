@@ -10,11 +10,17 @@
 #define TIME_DELAY 500
 
 void app_main() {
+  // Desable interrupts
+  esp_intr_disable(0);
+  
   // Initialize the display, buttons, and LED
   leds_init();
   disp_init();
   btns_init();
   ledc_init();
+
+  // Enable interrupts
+  esp_intr_enable(0);
 
   xTaskCreate(leds_test, "LEDs Test", 2048, NULL, 3, NULL);
   disp_test();

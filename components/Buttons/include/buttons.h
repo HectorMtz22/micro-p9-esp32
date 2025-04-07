@@ -12,4 +12,8 @@ void btns_init(void);
 int btns_increment_debounce(void);
 int btns_decrement(void);
 
+// ISR functions
+void btns_isr_handler_more(void *arg);
+void btns_isr_handler_less(void *arg);
+
 #endif // BUTTONS_H
