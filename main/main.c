@@ -8,7 +8,7 @@
 #include "ledc.h"
 #include "leds.h"
 
-#define TIME_DELAY 300
+#define TIME_DELAY 500
 
 void app_main() {
   // Initialize the display, buttons, and LED
@@ -20,17 +20,11 @@ void app_main() {
   xTaskCreate(leds_test, "LEDs Test", 2048, NULL, 3, NULL);
   disp_test();
 
-  int state = 0;
   while (true) {
-    disp_show(state);
-    ledc_update(state);
-    if (btns_increment_debounce()) {
-      if (++state >= 0x0F) state = 0x0F;
-    }
-    if (btns_decrement()) {
-      if (--state <= 0) state = 0;
-      disp_show(state);
-      vTaskDelay(TIME_DELAY / portTICK_PERIOD_MS);
+    for (int counter = 9; counter >= 0; counter--) {
+      disp_show(counter);
+      ledc_update(counter);
+      vTaskDelay(pdMS_TO_TICKS(TIME_DELAY));
     }
   }
 }
