@@ -26,9 +26,11 @@ void btns_init(void) {
 
 // ISR for button more
 void btns_isr_handler_more(void *arg) {
+  if (++leds_state > 5) leds_state = 5;
 
 }
 // ISR for button 1
 void btns_isr_handler_less(void *arg) {
+  if (--leds_state < 0) leds_state = 0;
 
 }
