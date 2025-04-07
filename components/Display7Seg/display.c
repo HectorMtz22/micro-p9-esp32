@@ -2,7 +2,6 @@
 #include "display.h"
 #include "driver/gpio.h" 
 #include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 
 void disp_init(void) {
   gpio_set_direction(DISP_7_SEG_A, GPIO_MODE_OUTPUT);

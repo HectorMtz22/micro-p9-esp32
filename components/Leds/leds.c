@@ -5,7 +5,6 @@
 #include "leds.h"
 
 #include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "driver/gpio.h"
 
 void leds_init(void) {

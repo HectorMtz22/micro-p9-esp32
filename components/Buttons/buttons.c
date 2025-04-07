@@ -1,7 +1,6 @@
 #include "buttons.h"
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 
 uint8_t prev_state_btn = 0;
 uint8_t actual_state_btn = 0;
