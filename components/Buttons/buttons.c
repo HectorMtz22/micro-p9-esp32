@@ -10,6 +10,10 @@ uint8_t actual_state_btn = 0;
 void btns_init(void) {
   gpio_set_direction(BTNS_INCREMENT, GPIO_MODE_INPUT);
   gpio_set_direction(BTNS_DECREMENT, GPIO_MODE_INPUT);
+
+  // Configure GPIOs as interrupts
+  gpio_set_intr_type(BTNS_INCREMENT, GPIO_INTR_HIGH_LEVEL); // Rising edge
+  gpio_set_intr_type(BTNS_DECREMENT, GPIO_INTR_HIGH_LEVEL); // Rising edge
   return;
 }
 
