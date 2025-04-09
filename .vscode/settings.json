@@ -11,6 +11,7 @@
     "idf.flashType": "UART",
     "files.associations": {
         "display.h": "c",
-        "ledc.h": "c"
+        "ledc.h": "c",
+        "freertos.h": "c"
     }
 }
