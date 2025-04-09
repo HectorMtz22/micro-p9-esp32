@@ -9,7 +9,7 @@
 #define BTNS_DECREMENT GPIO_NUM_2
 
 void btns_init(void);
-
+void btns_isr_register(void);
 // ISR functions
 void btns_isr_handler_more(void *arg);
 void btns_isr_handler_less(void *arg);

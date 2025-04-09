@@ -19,11 +19,14 @@ void btns_init(void) {
       .pull_up_en = GPIO_PULLUP_DISABLE,
   };
   gpio_config(&io_conf);
+  return;
+}
 
+void btns_isr_register(void) {
+  // Register the ISR for the buttons
   gpio_install_isr_service(ESP_INTR_FLAG_LEVEL1);
   gpio_isr_handler_add(BTNS_INCREMENT, btns_isr_handler_more, NULL);
   gpio_isr_handler_add(BTNS_DECREMENT, btns_isr_handler_less, NULL);
-  return;
 }
 
 // ISR for button more

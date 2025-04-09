@@ -19,11 +19,15 @@ void app_main() {
   btns_init();
   ledc_init();
 
-  // Enable interrupts
-  esp_intr_enable(0);
-
+  // Test before enabling interruptions
   xTaskCreate(leds_test, "LEDs Test", 2048, NULL, 3, NULL);
   disp_test();
+
+  // Register the ISR for the buttons
+  btns_isr_register();
+
+  // Enable interrupts
+  esp_intr_enable(0);
 
   while (true) {
     for (int counter = 9; counter >= 0; counter--) {
