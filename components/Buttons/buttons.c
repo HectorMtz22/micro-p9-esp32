@@ -4,9 +4,6 @@
 
 #include "leds.h"
 
-uint8_t prev_state_btn = 0;
-uint8_t actual_state_btn = 0;
-
 volatile int leds_state = 1;
 
 void btns_init(void) {
