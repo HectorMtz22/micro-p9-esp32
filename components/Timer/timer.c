@@ -8,8 +8,10 @@
 #include "driver/timer.h"
 
 #include "leds.h"
+#include "display.h"
 
 volatile uint8_t led_state = 1;
+volatile uint8_t display_state = 0;
 
 void my_1seg_timer_init() {
   timer_config_t config = {
@@ -33,6 +35,7 @@ void IRAM_ATTR timer_1seg_isr_handler(void *arg) {
   timer_group_clr_intr_status_in_isr(TIMER_GROUP_0, TIMER_0);
   // Vuelve a habilitar la alarma
   timer_group_enable_alarm_in_isr(TIMER_GROUP_0, TIMER_0);
-  led_state ^= 1;
-  leds_set(led_state);
+
+  if (++display_state > 9) display_state = 0;
+  disp_show(display_state); // Update display
 }
