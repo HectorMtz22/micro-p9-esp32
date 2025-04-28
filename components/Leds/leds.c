@@ -35,6 +35,6 @@ void leds_test(void *pvParameters) {
         vTaskDelay(pdMS_TO_TICKS(TEST_DELAY));
     }
     // Initial Sequence
-    leds_set(0b00000001);
+    leds_set(0);
     vTaskDelete(NULL); // Delete the task when done
 }
