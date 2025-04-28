@@ -1,6 +1,6 @@
 idf_component_register(
     SRCS "main.c"
-    PRIV_REQUIRES esp_driver_gpio 
+    PRIV_REQUIRES driver
     INCLUDE_DIRS "."
     REQUIRES Display7Seg
     REQUIRES Buttons 
