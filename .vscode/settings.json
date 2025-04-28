@@ -1,7 +1,7 @@
 {
     "C_Cpp.intelliSenseEngine": "default",
     "idf.espIdfPathWin": "c:\\Espressif\\frameworks\\esp-idf-v5.4",
-    "idf.pythonInstallPath": "C:\\Users\\Hctor\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
+    "idf.pythonInstallPath": "/sbin/python",
     "idf.openOcdConfigs": [
         "board/esp32-wrover-kit-3.3v.cfg"
     ],
@@ -13,5 +13,11 @@
         "display.h": "c",
         "ledc.h": "c",
         "freertos.h": "c"
-    }
+    },
+    "idf.espIdfPath": "/home/kilo/esp/v5.4.1/esp-idf",
+    "idf.toolsPath": "/home/kilo/.espressif",
+    "idf.customExtraVars": {
+        "IDF_TARGET": "esp32"
+    },
+    "idf.port": "/dev/ttyUSB0"
 }
