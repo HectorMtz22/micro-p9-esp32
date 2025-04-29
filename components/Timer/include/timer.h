@@ -8,7 +8,6 @@
 
 void my_1seg_timer_init(void);
 void my_0_5seg_timer_init(void);
-void timer_0_5seg_isr_handler(void *arg);
 void timer_1seg_isr_handler(void *arg);
 
 #endif
