@@ -10,7 +10,6 @@
 #include "leds.h"
 #include "display.h"
 
-volatile uint8_t led_state = 1;
 volatile uint8_t display_state = 0;
 
 void my_1seg_timer_init() {
@@ -28,6 +27,19 @@ void my_1seg_timer_init() {
   timer_enable_intr(TIMER_GROUP_0, TIMER_0);              // Habilitar interrupciones
   timer_isr_register(TIMER_GROUP_0, TIMER_0, timer_1seg_isr_handler, NULL, ESP_INTR_FLAG_IRAM, NULL); // Registrar la ISR
   timer_start(TIMER_GROUP_0, TIMER_0);                    // Iniciar el timer
+}
+
+void my_0_5seg_timer_init() {
+  timer_config_t config = {
+    .divider = TIMER_DIVIDER,        // 80 MHz / 80 = 1 MHz
+    .counter_dir = TIMER_COUNT_UP,
+    .counter_en = TIMER_PAUSE,
+    .alarm_en = TIMER_ALARM_DIS,
+    .auto_reload = TIMER_AUTORELOAD_DIS
+  };
+  timer_init(TIMER_GROUP_1, TIMER_0, &config);
+  timer_set_counter_value(TIMER_GROUP_1, TIMER_0, 0);
+  timer_start(TIMER_GROUP_1, TIMER_0);
 }
 
 void IRAM_ATTR timer_1seg_isr_handler(void *arg) {
