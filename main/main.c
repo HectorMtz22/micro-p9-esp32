@@ -1,39 +1,41 @@
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
+#include "driver/timer.h"
 
 // Own Components
 #include "display.h"
-#include "buttons.h"
-#include "ledc.h"
 #include "leds.h"
-
-#define TIME_DELAY 500
+#include "timer.h"
 
 void app_main() {
   // Desable interrupts
   esp_intr_disable(0);
   
-  // Initialize the display, buttons, and LED
+  // Initialize the display and LED
   leds_init();
   disp_init();
-  btns_init();
-  ledc_init();
 
   // Test before enabling interruptions
   xTaskCreate(leds_test, "LEDs Test", 2048, NULL, 3, NULL);
   disp_test();
 
-  // Register the ISR for the buttons
-  btns_isr_register();
-
   // Enable interrupts
   esp_intr_enable(0);
 
-  while (true) {
-    for (int counter = 9; counter >= 0; counter--) {
-      disp_show(counter);
-      ledc_update(counter);
-      vTaskDelay(pdMS_TO_TICKS(TIME_DELAY));
+  my_1seg_timer_init(); // Initialize the timer
+  my_0_5seg_timer_init(); // Initialize the timer
+
+  uint64_t overflow_count_timer_2 = 0;
+  uint64_t previous_count = 0;
+  uint8_t led_state = 0;
+
+  while (1) {
+    timer_get_counter_value(TIMER_GROUP_1, TIMER_0, &overflow_count_timer_2); // Polling rate
+    if (overflow_count_timer_2 - previous_count >= 500000) { // 1Mhz / 2 = 0.5 seconds
+      led_state ^= 1;
+      leds_set(led_state);
+      previous_count = overflow_count_timer_2; // Update the previous count
     }
+    vTaskDelay(10 / portTICK_PERIOD_MS); // Espera para no bloquear el CPU
   }
 }

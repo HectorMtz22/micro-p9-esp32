@@ -63,4 +63,5 @@ void disp_test(void) {
     disp_show(-1);
     vTaskDelay(TEST_DELAY / portTICK_PERIOD_MS);
   }
+  disp_show(0);
 }
