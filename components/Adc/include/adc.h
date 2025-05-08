@@ -4,6 +4,8 @@
 #ifndef ADC_H
 #define ADC_H
 
+#define ADC_PIN ADC2_CHANNEL_3
+
 void adc_init();
 int adc_read();
 
