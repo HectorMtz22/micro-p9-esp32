@@ -20,7 +20,7 @@ void app_main() {
     display_value = convert_to_display_value(adc_value);
 
     disp_show(display_value); // Muestra el valor ADC en el display
-    printf("ADC Value: %d, Display Value: %d\n", adc_value, display_value);
+    //printf("ADC Value: %d, Display Value: %d\n", adc_value, display_value);
     vTaskDelay(100 / portTICK_PERIOD_MS); // Espera para no bloquear el CPU
   }
 }
