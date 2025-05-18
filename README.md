@@ -1,15 +1,12 @@
-# Hardware Timers
+# Motor DC with TIP12X
 
-The objective on this project is to implement 2 timers:
+The objective on this project is to implement PWM:
 
-- Periodic timer each second for counting from 0 - 9 and display it.
-- Normal timer controlling a led each 0.5 seconds
-
-I'm using interrupts in the first one and a implementation of polling rate on the second.
+- Control a DC motor with TIP12X transistor 
 
 ## Folder contents
 
-The project **timers** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+The project **motortip** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
 
 ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt` files that provide set of directives and instructions describing the project's source files and targets (executable, library, or both).
 
@@ -22,35 +19,16 @@ Below is short explanation of remaining files in the project folder.
 │   ├── CMakeLists.txt
 │   └── main.c
 ├── components
-│   ├── Buttons
-│   │   ├── buttons.c
+│   ├── Adc
+│   │   ├── adc.c
 │   │   ├── CMakeLists.txt
 │   │   └── include
-│   │       └── buttons.h
-│   ├── Timer
-│   │   ├── timer.c
-│   │   ├── CMakeLists.txt
-│   │   └── include
-│   │       └── timer.h
-│   │   ├── buttons.c
-│   │   ├── CMakeLists.txt
-│   │   └── include
-│   │       └── buttons.h
-│   ├── Display7Seg
-│   │   ├── display.c
-│   │   ├── CMakeLists.txt
-│   │   └── include
-│   │       └── display.h
-│   ├── Ledc
-│   │   ├── ledc.c
-│   │   ├── CMakeLists.txt
-│   │   └── include
-│   │       └── ledc.h
-│   └── Leds
-│       ├── leds.c
+│   │       └── adc.h
+│   └── MotorTip
+│       ├── motortip.c
 │       ├── CMakeLists.txt
 │       └── include
-│           └── leds.h
+│           └── motortip.h
 └── README.md                  This is the file you are currently reading
 ```
 
